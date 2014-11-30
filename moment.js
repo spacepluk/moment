@@ -1697,12 +1697,12 @@
 
     function relativeTime(posNegDuration, withoutSuffix, locale) {
         var duration = moment.duration(posNegDuration).abs(),
-            seconds = round(duration.as('s')),
-            minutes = round(duration.as('m')),
-            hours = round(duration.as('h')),
-            days = round(duration.as('d')),
-            months = round(duration.as('M')),
-            years = round(duration.as('y')),
+            seconds = round(duration.asUnits('s')),
+            minutes = round(duration.asUnits('m')),
+            hours = round(duration.asUnits('h')),
+            days = round(duration.asUnits('d')),
+            months = round(duration.asUnits('M')),
+            years = round(duration.asUnits('y')),
 
             args = seconds < relativeTimeThresholds.s && ['s', seconds] ||
                 minutes === 1 && ['m'] ||
@@ -2771,7 +2771,7 @@
             return this[units.toLowerCase() + 's']();
         },
 
-        as : function (units) {
+        asUnits : function (units) {
             var days, months;
             units = normalizeUnits(units);
 
@@ -2852,28 +2852,28 @@
     }
 
     moment.duration.fn.asMilliseconds = function () {
-        return this.as('ms');
+        return this.asUnits('ms');
     };
     moment.duration.fn.asSeconds = function () {
-        return this.as('s');
+        return this.asUnits('s');
     };
     moment.duration.fn.asMinutes = function () {
-        return this.as('m');
+        return this.asUnits('m');
     };
     moment.duration.fn.asHours = function () {
-        return this.as('h');
+        return this.asUnits('h');
     };
     moment.duration.fn.asDays = function () {
-        return this.as('d');
+        return this.asUnits('d');
     };
     moment.duration.fn.asWeeks = function () {
-        return this.as('weeks');
+        return this.asUnits('weeks');
     };
     moment.duration.fn.asMonths = function () {
-        return this.as('M');
+        return this.asUnits('M');
     };
     moment.duration.fn.asYears = function () {
-        return this.as('y');
+        return this.asUnits('y');
     };
 
     /************************************
